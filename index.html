@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBE | Customer Service Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cbe-purple: #4B0082;
+            --cbe-gold: #FFD700;
+            --white: #ffffff;
+            --light-gray: #f4f7fa;
+            --text-dark: #333;
+            --transition: all 0.3s ease;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Poppins', sans-serif; background: var(--light-gray); color: var(--text-dark); overflow-x: hidden; }
+
+        /* --- Top Bar (Time & Exchange) --- */
+        .top-info-bar {
+            background: #2c004d;
+            color: white;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            align-items: center;
+            border-bottom: 2px solid var(--cbe-gold);
+        }
+        .exchange-rate span { margin-right: 20px; color: var(--cbe-gold); font-weight: 600; }
+
+        /* --- Header & Search --- */
+        header {
+            background: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo h1 { color: var(--cbe-purple); font-size: 1.6rem; text-transform: uppercase; letter-spacing: 1px; }
+        .logo span { color: var(--cbe-gold); }
+        
+        .search-box { display: flex; }
+        .search-box input {
+            padding: 10px 20px;
+            border: 2px solid #eee;
+            border-radius: 25px 0 0 25px;
+            outline: none;
+            width: 250px;
+            transition: var(--transition);
+        }
+        .search-box input:focus { border-color: var(--cbe-purple); }
+        .search-box button {
+            padding: 10px 25px;
+            background: var(--cbe-purple);
+            color: white;
+            border: none;
+            border-radius: 0 25px 25px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .search-box button:hover { background: #310055; }
+
+        /* --- Navigation --- */
+        nav { background: var(--cbe-purple); }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 18px 25px;
+            display: block;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+        nav ul li a:hover { background: rgba(255,255,255,0.1); border-bottom-color: var(--cbe-gold); color: var(--cbe-gold); }
+
+        /* --- Refined Hero Slider (4 Slides) --- */
+        .slider-container {
+            width: 100%;
+            height: 550px;
+            position: relative;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            width: 400%; /* Width for 4 slides */
+            height: 100%;
+            animation: slideAnim 20s infinite ease-in-out; /* Adjusted animation time */
+        }
+        .slide {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        .slide-overlay {
+            background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+            padding: 60px;
+            border-radius: 15px;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .slide-overlay h2 { font-size: 3.5rem; color: var(--cbe-gold); margin-bottom: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;}
+        .slide-overlay p { font-size: 1.3rem; font-weight: 300; line-height: 1.6; }
+
+        @keyframes slideAnim {
+            0%, 20% { transform: translateX(0); }             /* Slide 1 */
+            25%, 45% { transform: translateX(-25%); }          /* Slide 2 */
+            50%, 70% { transform: translateX(-50%); }          /* Slide 3 */
+            75%, 95% { transform: translateX(-75%); }          /* Slide 4 */
+            100% { transform: translateX(0); }                /* Reset to 1 */
+        }
+
+        /* --- Content Sections --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 80px 5%;
+        }
+        .service-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--cbe-purple);
+            transition: var(--transition);
+        }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-top-color: var(--cbe-gold); }
+        .service-card h2 { color: var(--cbe-purple); margin-bottom: 20px; font-weight: 600; }
+        .service-card p { font-size: 1rem; color: #666; line-height: 1.7; }
+
+        footer {
+            background: #111;
+            color: #bbb;
+            padding: 40px 5%;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        footer p { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="top-info-bar">
+        <div id="liveDateTime" style="font-weight: 500;">Server Time: Loading...</div>
+        <div class="exchange-rate" id="dynamicRates">
+            <span>Updating rates...</span>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo">
+              <img src="image/Logo.png" alt="CBE Logo" width="60">
+            <h1>Commercial Bank of <span>Ethiopia</span></h1>
+        </div>
+        <div class="search-box">
+            <form  method="post"action="search.jsp">
+            <input type="text" name="accountnumber"placeholder="Find customer services...">
+            <button name="submit">Search</button>
+            </form>
+        </div>
+        
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="create.html">NEW ACCOUNT</a></li>
+            <li><a href="balance1.jsp">BALANCE</a></li>
+            <li><a href="deposit1.jsp">DEPOSIT</a></li>
+            <li><a href="withdraw1.jsp">WITHDRAW</a></li>
+            <li><a href="transfer1.jsp">TRANSFER</a></li>
+            <li><a href="closeac1.jsp">CLOSE A/C</a></li>
+            <li><a href="about.jsp">ABOUT US</a></li>
+        </ul>
+    </nav>
+
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=1600&auto=format&fit=crop');">
+                <div class="slide-overlay">
+                    <h2>Digital Innovation</h2>
+                    <p>Unlock the future of finance with CBE's modern digital banking solutions. Fast, secure, and available 24/7.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?q=80&w=1600&auto=format&fit=crop');">
+                <div class="slide-overlay">
+                    <h2>Growth & Prosperity</h2>
+                    <p>Investing in your ambitions. Partner with the Commercial Bank of Ethiopia to build a prosperous tomorrow.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1600&auto=format&fit=crop');">
+                <div class="slide-overlay">
+                    <h2>Unwavering Security</h2>
+                    <p>Your assets are protected by world-class security. Count on the bank that generations have relied on.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c292321d?q=80&w=1600&auto=format&fit=crop');">
+                <div class="slide-overlay">
+                    <h2>Global Reach</h2>
+                    <p>Seamlessly connect with the world. Experience fast and reliable international money transfers for your business and family.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="services-grid">
+        <div class="service-card">
+            <h2>Our Vision</h2>
+            <p>To become a world-class commercial bank by the year 2025 through excellence in customer service and digital transformation.</p>
+        </div>
+        <div class="service-card">
+            <h2>Digital First</h2>
+            <p>From mobile banking to comprehensive online solutions, we bring convenient banking services directly to your fingertips.</p>
+        </div>
+        <div class="service-card">
+            <h2>Dedicated Support</h2>
+            <p>Our commitment to you is absolute. Reach our professional support team at 951 for expert assistance, any time.</p>
+        </div>
+    </div>
+
+    <footer>
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/Commercial_Bank_of_Ethiopia_logo.png/220px-Commercial_Bank_of_Ethiopia_logo.png" alt="CBE" style="height: 40px; filter: grayscale(1) brightness(2); margin-bottom: 15px;">
+        <p>&copy; 2026 Commercial Bank of Ethiopia. All Rights Reserved.</p>
+        <p style="font-size: 0.8rem;">Empowering Ethiopia's economy with reliable and secure banking solutions.</p>
+    </footer>
+
+    <script>
+        // Update Time and Date Dynamically
+        function updateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', year: 'numeric', month: 'long', 
+                day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true 
+            };
+            document.getElementById('liveDateTime').innerHTML = "Server Time: " + now.toLocaleDateString('en-US', options);
+        }
+
+        // DYNAMIC RATES LOGIC (Static simulation for UI)
+        function updateExchangeRates() {
+            // Placeholder rates - would be fetched from a server in production
+            const rates = {
+                USD: 114.20,
+                EUR: 124.50,
+                GBP: 148.10
+            };
+
+            const rateHTML = `
+                <span>USD: ${rates.USD.toFixed(2)} ETB</span>
+                <span>EUR: ${rates.EUR.toFixed(2)} ETB</span>
+                <span>GBP: ${rates.GBP.toFixed(2)} ETB</span>
+            `;
+            document.getElementById('dynamicRates').innerHTML = rateHTML;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+        updateExchangeRates(); 
+    </script>
+
+</body>
+</html>

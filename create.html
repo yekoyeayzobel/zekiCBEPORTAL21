@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBE | Open New Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cbe-purple: #4B0082;
+            --cbe-gold: #FFD700;
+            --white: #ffffff;
+            --light-gray: #f4f7fa;
+            --text-dark: #333;
+            --transition: all 0.3s ease;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Poppins', sans-serif; background: var(--light-gray); color: var(--text-dark); }
+
+        /* --- Top Bar --- */
+        .top-info-bar {
+            background: #2c004d;
+            color: white;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--cbe-gold);
+        }
+
+        /* --- Header --- */
+        header {
+            background: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .logo h1 { color: var(--cbe-purple); font-size: 1.5rem; text-transform: uppercase; }
+        .logo span { color: var(--cbe-gold); }
+
+        /* --- Navigation --- */
+        nav { background: var(--cbe-purple); sticky; top: 0; z-index: 1000; }
+        nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; }
+        nav ul li a {
+            color: white; text-decoration: none; padding: 18px 20px;
+            display: block; font-weight: 500; font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        nav ul li a:hover { background: rgba(255,255,255,0.1); color: var(--cbe-gold); }
+
+        /* --- Professional 4-Image Slider --- */
+        .slider-container { width: 100%; height: 400px; position: relative; overflow: hidden; }
+        .slides { display: flex; width: 400%; height: 100%; animation: slideAnim 20s infinite ease-in-out; }
+        .slide { width: 100%; height: 100%; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
+        .slide-overlay { background: rgba(0,0,0,0.6); padding: 40px; border-radius: 10px; max-width: 700px; }
+        .slide-overlay h2 { color: var(--cbe-gold); font-size: 2.5rem; margin-bottom: 10px; }
+
+        @keyframes slideAnim {
+            0%, 20% { transform: translateX(0); }
+            25%, 45% { transform: translateX(-25%); }
+            50%, 70% { transform: translateX(-50%); }
+            75%, 95% { transform: translateX(-75%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* --- Main Content Layout --- */
+        .main-wrapper {
+            max-width: 1200px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); height: fit-content; }
+        .sidebar h2 { color: var(--cbe-purple); font-size: 1.2rem; margin-bottom: 15px; border-bottom: 2px solid var(--cbe-gold); padding-bottom: 5px; }
+        .sidebar ul { list-style: none; }
+        .sidebar ul li { margin-bottom: 10px; }
+        .sidebar ul li a { color: #555; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .sidebar ul li a:hover { color: var(--cbe-purple); padding-left: 5px; }
+
+        /* --- Modern Form Style --- */
+        .form-container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .form-container h1 { color: var(--cbe-purple); margin-bottom: 25px; font-size: 1.8rem; text-align: center; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: #444; }
+        .form-group input {
+            width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 6px;
+            font-family: inherit; transition: var(--transition);
+        }
+        .form-group input:focus { border-color: var(--cbe-purple); outline: none; box-shadow: 0 0 0 3px rgba(75, 0, 130, 0.1); }
+
+        .btn-row { display: flex; gap: 15px; margin-top: 30px; }
+        .btn-submit { background: var(--cbe-purple); color: white; border: none; padding: 12px 30px; border-radius: 6px; cursor: pointer; font-weight: 600; flex: 2; transition: 0.3s; }
+        .btn-submit:hover { background: #310055; transform: translateY(-2px); }
+        .btn-reset { background: #eee; color: #333; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; flex: 1; transition: 0.3s; }
+        .btn-reset:hover { background: #ddd; }
+
+        /* --- Footer --- */
+        footer { background: #2d3436; color: #dfe6e9; padding: 60px 5%; margin-top: 50px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .footer-section h3 { color: white; margin-bottom: 20px; font-size: 1.1rem; }
+        .footer-bottom { text-align: center; padding-top: 40px; margin-top: 40px; border-top: 1px solid #444; font-size: 0.8rem; }
+        .cbe-header {
+    background-color: #ffffff; /* White background */
+    padding: 20px 0;
+    display: flex;             /* Enables Flexbox */
+    justify-content: center;   /* Centers horizontally */
+    align-items: center;       /* Centers vertically */
+    text-align: center;        /* Ensures text inside is centered */
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.header-content h1 {
+    color: #4B0082;            /* CBE Purple */
+    font-size: 2rem;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.header-content h1 span {
+    color: #FFD700;            /* CBE Gold */
+}
+
+.slogan {
+    color: #666;
+    font-style: italic;
+    margin-top: 5px;
+    font-size: 1rem;
+}
+    </style>
+</head>
+<body>
+
+    <div class="top-info-bar">
+        <div id="liveDateTime">Loading...</div>
+        <div>24/7 Customer Support: 951</div>
+    </div>
+
+    <header>
+         <img alt="Home Button" src="image/Logo.png"width="150" height="150">
+       <header class="cbe-header">
+    <div class="header-content">
+        <h1>Commercial Bank of <span>Ethiopia</span></h1>
+        <p class="slogan">The Bank You Can Always Rely On</p>
+    </div>
+</header>
+        
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">HOMEPAGE</a></li>
+            <li><a href="create.html" style="color: var(--cbe-gold);">NEW ACCOUNT</a></li>
+            <li><a href="balance1.jsp">BALANCE</a></li>
+            <li><a href="deposit1.jsp">DEPOSIT</a></li>
+            <li><a href="withdraw1.jsp">WITHDRAW</a></li>
+            <li><a href="transfer1.jsp">TRANSFER</a></li>
+            <li><a href="about.jsp">ABOUT US</a></li>
+        </ul>
+    </nav>
+
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=1600');">
+                <div class="slide-overlay">
+                    <h2>Digital Transformation</h2>
+                    <p>Open an account today and join millions of Ethiopians using our world-class digital platform.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?q=80&w=1600');">
+                <div class="slide-overlay">
+                    <h2>Your Financial Partner</h2>
+                    <p>From savings to investments, we provide the tools you need to grow your wealth safely.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1600');">
+                <div class="slide-overlay">
+                    <h2>Secure Banking</h2>
+                    <p>Advanced encryption and 24/7 monitoring to ensure your money is always protected.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c292321d?q=80&w=1600');">
+                <div class="slide-overlay">
+                    <h2>Empowering Dreams</h2>
+                    <p>Opening an account is the first step toward your business or personal milestones.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <aside class="sidebar">
+            <h2>Digital Services</h2>
+            <ul>
+                <li><a href="#">CBE Birr Mobile App</a></li>
+                <li><a href="#">Internet Banking Login</a></li>
+                <li><a href="#">ATM Locations</a></li>
+                <li><a href="#">Exchange Rates</a></li>
+            </ul>
+            <br>
+            <h2>Account Types</h2>
+            <ul>
+                <li><a href="https://vacancy.cbe.com.et/">Savings Account</a></li>
+                <li><a href="#">Current Account</a></li>
+                <li><a href="#">Interest Free Banking</a></li>
+                <li><a href="#">Women's Savings</a></li>
+            </ul>
+        </aside>
+
+        <section class="form-container">
+            <h1>OPEN NEW ACCOUNT</h1>
+            <form name="F1" onsubmit="return validateForm(this)" action="connection.jsp" method="post">
+                
+                <div class="form-group">
+                    <label>FULL NAME / USERNAME</label>
+                    <input type="text" name="username" placeholder="Enter your full name">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label>PASSWORD</label>
+                        <input type="password" name="password" placeholder="Create a strong password">
+                    </div>
+                    <div class="form-group">
+                        <label>REPEAT PASSWORD</label>
+                        <input type="password" name="repassword" placeholder="Confirm password">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>RESIDENTIAL ADDRESS</label>
+                    <input type="text" name="address" placeholder="e.g. Bole, Addis Ababa">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label>PHONE NUMBER</label>
+                        <input type="text" name="phone" placeholder="+251...">
+                    </div>
+                    <div class="form-group">
+                        <label>EMAIL ADDRESS</label>
+                        <input type="email" name="email" placeholder="name@example.com">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>INITIAL DEPOSIT (ETB)</label>
+                    <input type="number" name="balance" placeholder="Minimum 50 ETB">
+                </div>
+
+                <div class="btn-row">
+                    <button type="submit"name="submit" class="btn-submit">CREATE ACCOUNT</button>
+                    <button type="reset" class="btn-reset">CLEAR</button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>About CBE</h3>
+                <p>The pioneer of modern banking in Ethiopia, committed to delivering excellence since 1942.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Security Tips</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: support@cbe.com.et</p>
+                <p>Phone: +251 11 123 4567</p>
+                <p>Addis Ababa, Ethiopia</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Commercial Bank of Ethiopia. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        function validateForm(form) {
+            for(var i=0; i<form.elements.length; i++) {
+                if(form.elements[i].type !== "reset" && form.elements[i].type !== "submit" && form.elements[i].value == "") {
+                    alert("Please fill in the " + form.elements[i].name.toUpperCase() + " field.");
+                    form.elements[i].focus();
+                    return false;
+                }
+            }
+            if(form.password.value !== form.repassword.value) {
+                alert("Passwords do not match!");
+                return false;
+            }
+            return true;
+        }
+
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('liveDateTime').innerHTML = now.toLocaleString();
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+
+</body>
+</html>

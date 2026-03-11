@@ -1,0 +1,136 @@
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        /* CBE Brand Colors */
+        :root {
+            --cbe-purple: #4b2d83; /* Official CBE Purple */
+            --cbe-gold: #fdb913;   /* Official CBE Gold/Yellow */
+            --text-white: #ffffff;
+            --text-light: #d1d1d1;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .cbe-footer {
+            background-color: var(--cbe-purple);
+            color: var(--text-white);
+            padding: 40px 20px 20px 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            border-top: 5px solid var(--cbe-gold);
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 280px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h4 {
+            color: var(--cbe-gold);
+            text-transform: uppercase;
+            font-size: 16px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .contact-item {
+            margin-bottom: 10px;
+            display: block;
+            color: var(--text-white);
+            text-decoration: none;
+        }
+
+        .contact-item strong {
+            color: var(--cbe-gold);
+        }
+
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .policy-links {
+            margin-top: 10px;
+        }
+
+        .policy-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .policy-links a:hover {
+            color: var(--cbe-gold);
+        }
+
+        .regulation-text {
+            font-style: italic;
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <footer class="cbe-footer">
+        <div class="footer-container">
+             <center><img src="image/Logo.png" alt="business" width="150" height="150"></center><br>
+            <div class="footer-section">
+               
+                <h4>Contact & Support</h4>
+                <div class="contact-item"><strong>Customer Service:</strong> 951 (Toll-Free in Ethiopia)</div>
+                <a href="mailto:reachout@cbe.com.et" class="contact-item"><strong>Email:</strong> reachout@cbe.com.et</a>
+                <div class="contact-item"><strong>Head Office:</strong> CBE Tower, Churchill Road, Addis Ababa, Ethiopia.</div>
+            </div>
+
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>The Commercial Bank of Ethiopia is the leading bank in Ethiopia, dedicated to providing reliable and modern banking services since 1942.</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div>Copyright &copy; 2026 <strong>Commercial Bank of Ethiopia</strong>. All rights reserved.</div>
+            
+            <div class="policy-links">
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Terms & Conditions</a> | 
+                <a href="#">Cookie Policy</a>
+            </div>
+
+            <div class="regulation-text">
+                Regulated by the National Bank of Ethiopia (NBE).
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
